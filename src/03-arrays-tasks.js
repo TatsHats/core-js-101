@@ -53,192 +53,46 @@ function getMovingSum(arr) {
     return sum;
   });
 }
-
-/**
- * Returns every second item from the specified array:
- *
- * @param {array} arr
- * @return {array}
- *
- * Example :
- * [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 2, 4, 6, 8, 10 ]
- * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
- * [ "a" ] => []
- */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  return arr.filter((_, index) => index % 2 !== 0);
 }
-
-
-/**
- * Propagates every item in sequence its position times
- * Returns an array that consists of: one first item, two second items, three third items etc.
- *
- * @param {array} arr
- * @return {array}
- *
- * @example :
- *  [] => []
- *  [ 1 ] => [ 1 ]
- *  [ 'a', 'b' ] => [ 'a', 'b','b' ]
- *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
- *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
- */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  return arr.flatMap((item, index) => Array(index + 1).fill(item));
 }
-
-
-/**
- * Returns the 3 largest numbers from the specified array
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *   [] => []
- *   [ 1, 2 ] => [ 2, 1 ]
- *   [ 1, 2, 3 ] => [ 3, 2, 1 ]
- *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
- *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
- */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function get3TopItems(arr) {
+  return arr.sort((a, b) => b - a).slice(0, 3);
 }
-
-
-/**
- * Returns the number of positive numbers from specified array
- *
- * @param {array} arr
- * @return {number}
- *
- * @example
- *   [ ]          => 0
- *   [ -1, 0, 1 ] => 1
- *   [ 1, 2, 3]   => 3
- *   [ null, 1, 'elephant' ] => 1
- *   [ 1, '2' ] => 1
- */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  return arr.filter((item) => typeof item === 'number' && item > 0).length;
+}
+function sortDigitNamesByNumericOrder(arr) {
+  const names = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  return arr.sort((a, b) => names.indexOf(a) - names.indexOf(b));
+}
+function getItemsSum(arr) {
+  return arr.reduce((sum, el) => sum + el, 0);
+}
+function getFalsyValuesCount(arr) {
+  return arr.filter((el) => !el).length;
+}
+function findAllOccurrences(arr, item) {
+  return arr.filter((el) => el === item).length;
+}
+function toStringList(arr) {
+  return arr.join(',');
+}
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) => {
+    if (a.country > b.country) return 1;
+    if (a.country < b.country) return -1;
+    if (a.city > b.city) return 1;
+    if (a.city < b.city) return -1;
+    return 0;
+  });
 }
 
 /**
- * Sorts digit names
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *   [] => []
- *   [ 'nine','one' ]                 => [ 'one', 'nine' ]
- *   [ 'one','two','three' ]          => [ 'one','two', 'three' ]
- *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
- *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
- */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns the sum of all items in the specified array of numbers
- *
- * @param {array} arr
- * @return {number}
- *
- * @example
- *   [] => 0
- *   [ 1, 2, 3 ]           => 6
- *   [ -1, 1, -1, 1 ]      => 0
- *   [ 1, 10, 100, 1000 ]  => 1111
- */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns the number of all falsy value in the specified array
- *
- * @param {array} arr
- * @return {number}
- *
- * @example
- *  [] => 0
- *  [ 1, '', 3 ] => 1
- *  [ -1, 'false', null, 0 ] => 2
- *  [ null, undefined, NaN, false, 0, '' ]  => 6
- */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns a number of all occurrences of the specified item in an array
- *
- * @param {array} arr
- * @param {any} item
- * @return {number}
- *
- * @example
- *    [ 0, 0, 1, 1, 1, 2 ], 1 => 3
- *    [ 1, 2, 3, 4, 5 ], 0 => 0
- *    [ 'a','b','c','c' ], 'c'=> 2
- *    [ null, undefined, null ], null => 2
- *    [ true, 0, 1, 'true' ], true => 1
- */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Concatenates all elements from specified array into single string with ',' delimiter
- *
- * @param {array} arr
- * @return {string}
- *
- * @example
- *    [0, false, 'cat', NaN, true, '']  => '0,false,cat,NaN,true,'
- *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
- *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
- */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
-}
-
-
-/**
- * Sorts the specified array by country name first and city name
- * (if countries are equal) in ascending order.
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    [
- *      { country: 'Russia',  city: 'Moscow' },
- *      { country: 'Belarus', city: 'Minsk' },
- *      { country: 'Poland',  city: 'Warsaw' },
- *      { country: 'Russia',  city: 'Saint Petersburg' },
- *      { country: 'Poland',  city: 'Krakow' },
- *      { country: 'Belarus', city: 'Brest' }
- *    ]
- *                      =>
- *    [
- *      { country: 'Belarus', city: 'Brest' },
- *      { country: 'Belarus', city: 'Minsk' },
- *      { country: 'Poland',  city: 'Krakow' },
- *      { country: 'Poland',  city: 'Warsaw' },
- *      { country: 'Russia',  city: 'Moscow' },
- *      { country: 'Russia',  city: 'Saint Petersburg' }
- *    ]
- */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Creates an identity matrix of the specified size
+ * Creates an identity matrix of the specified size //без исп. циклов
  *
  * @param {number} n
  * @return {array}
