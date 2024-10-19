@@ -24,8 +24,6 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
 function getLinearEquationRoot(a, b) {
   return -b / a;
 }
-
-
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
  * coordinates in Cartesian plane.
@@ -44,10 +42,12 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const dotProduct = x1 * x2 + y1 * y2;
+  const vectorLengthA = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const vectorLengthB = Math.sqrt(x2 ** 2 + y2 ** 2);
+  return Math.acos(dotProduct / (vectorLengthA * vectorLengthB));
 }
-
 function getLastDigit(value) {
   return Math.abs(value % 10);
 }
